@@ -1,4 +1,4 @@
-# OIST Thesis Proposal LaTeX Template
+# OIST Thesis LaTeX Template
 
 This is an unofficial template for the OIST Thesis, based on the
 version created by Jeremie Gillet.
