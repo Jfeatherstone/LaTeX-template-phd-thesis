@@ -6,8 +6,8 @@ version created by Jeremie Gillet.
 Be sure to read through the default PDF for instructions on how to use
 this template effectively.
 
-You will find the most recent version of the guidelines for the thesis proposal
-in Section 5 of the [Graduate School Policies](https://www.oist.jp/education/policies-regulations/gs-policies).
+You will find the most recent version of the guidelines for the thesis
+in Section 6 of the [Graduate School Policies](https://www.oist.jp/education/policies-regulations/gs-policies).
 
 In case these requirements change, the exact version of the formatting
 requirements to which this template adheres can be found here:
