@@ -14,9 +14,11 @@ I confirm that:
 
 Date:  \submissiondate
 
-Signature: \textbf{You may include here an image with a scan of your signature.}
-
-
-
-
-
+Signature:
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=north west, %anchor is upper left corner of the graphic
+      xshift=8cm, %shifting around
+      yshift=-23cm]
+     at (current page.north west) %left upper corner of the page
+     {\includegraphics[width=6cm]{signature.png}};
+\end{tikzpicture}

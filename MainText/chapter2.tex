@@ -1,84 +1,141 @@
-\chapter{How to use the templates} \label{ch-template}
+\chapter{How to Use the Template} \label{ch-2}
 
-This is a practical guide into how to use this template, by explaining the role of the different folders, and an option of \verb|\documentclass{oist_thesis}|, which accepts either \verb|temporary| or \verb|final|.
+This is a practical guide into how to use this template, by explaining the role
+of the different folders and files. The basic structure of this folder should
+look like:
+\texttt{
+\\
+|--- Thesis.tex \\ 
+|--- Images/ \\ 
+|--- MainText/ \\ 
+\hspace*{0.5cm}|--- introduction.tex\\
+\hspace*{0.5cm}|--- chapter1.tex\\
+\hspace*{0.5cm}|--- chapter2.tex\\
+\hspace*{0.5cm}|--- chapter3.tex\\
+\hspace*{0.5cm}|--- conclusion.tex\\
+|--- Preamble/ \\ 
+\hspace*{0.5cm}|--- abbreviations.tex\\
+\hspace*{0.5cm}|--- abstract.tex\\
+\hspace*{0.5cm}|--- acknowledgments.tex\\
+\hspace*{0.5cm}|--- coauthorship.tex\\
+\hspace*{0.5cm}|--- declaration.tex\\
+\hspace*{0.5cm}|--- dedication.tex\\
+\hspace*{0.5cm}|--- glossary.tex\\
+\hspace*{0.5cm}|--- mydefinitions.tex\\
+\hspace*{0.5cm}|--- nomenclature.tex\\
+\hspace*{0.5cm}|--- physics\_bibstyle.bst\\
+\hspace*{0.5cm}|--- Thesis\_bibliography.bib\\
+}
 
-\section{Folders}
+\section{The \texttt{Preamble} Folder}
 
-The main folder contains three folders detailed here:
+You should edit the basic information about the thesis
+which can be found in the file \texttt{Preamble/mydefinitions.tex}. This includes
+your name, the name of supervisor (and co-supervisor, if applicable) your title, 
+and the date.
 
+There are several toggle options available in this file, allowing you to
+switch between thesis and thesis proposal formatting, as well as between
+1.5 spacing (for thesis proposal and drafts of the thesis) and single
+spacing (for the final thesis).
+
+This file also contains the bibliography settings, custom packages, and any custom
+commands that you many want to use. The default bibliography style is defined in
+\texttt{Preamble/physics\_bibstyle.bst}, which was created by Jeremie Gillet in 2011
+for his thesis. Feel free to swap this file out with a style more suited to your
+field, and be sure to change the file name in \texttt{Preamble/mydefinitions.tex}
+(line 19). By default, the bibliography file containing
+your references is \texttt{Preamble/Thesis\_bibliography.bib}, so you should
+replace this file with your own version. If you'd like to store your bibliography
+information somewhere else (for example, if you have one master file for all of your
+LaTeX projects) you can edit the appropriate section in \texttt{Thesis.tex}
+(should be around line 140).
+
+You should write your abstract in the file \texttt{Preamble/abstract.tex}. This
+should not be longer than a single page.
+
+You will also need to edit \texttt{Preamble/declaration.tex} if you have
+published work that overlaps with the thesis. Similarly, if
+there are others who have worked on any part of the work presented here,
+you need to mention this in \texttt{Preamble/coauthorship.tex}.
+
+If desired, you can use \texttt{Preamble/abbreviations.tex}, \texttt{Preamble/glossary.tex},
+and \texttt{Preamble/nomenclature.tex} to define abbreviations and terms that
+might be useful to the reader.
+
+\section{The \texttt{MainText} Folder}
+
+For the thesis, the main text can be split across however many chapters are
+necessary, though there should be an introduction and conclusion.
+Each of these chapters should be written in a standalone file located in
+the \texttt{MainText} folder, for example:
+\texttt{
+\\
+|--- MainText/ \\ 
+\hspace*{0.5cm}|--- introduction.tex\\
+\hspace*{0.5cm}|--- chapter1.tex\\
+\hspace*{0.5cm}|--- chapter2.tex\\
+\hspace*{0.5cm}|--- chapter3.tex\\
+\hspace*{0.5cm}|--- conclusion.tex\\
+}
+If you'd like to rename or add new files, make sure to change where they are
+referenced in \texttt{Thesis.tex} around line 260. If you want
+to add an appendix, you can create a new file in \texttt{MainText/}, though
+add them to \texttt{Thesis.tex} around line 280 instead.
+Your thesis may have several other chapters here, for example, Conclusions.
+
+\section{The \texttt{Images} Folder}
+
+All the images that you will use in your thesis should be placed in the \texttt{Images}
+folder. This can contain subfolders, for example one for each chapter. To include
+an image from the main text, use something like
+\texttt{\textbackslash includegraphics\{subfolder/image.jpg\}}; no need to
+worry about the path to the \texttt{Images} folder.
+
+There are two images in the root folder here that are particularly important:
+\texttt{Images/symbol.jpg} and \texttt{Images/signature.png}. Don't modify
+or remove the former, as it is needed to show the logo on the title page.
+You should replace the latter with a picture of your signature, which will
+be placed at the bottom of \texttt{Preamble/declaration.tex}. For best
+results, try to get a picture where the background is uniform white.
+
+\section{The \texttt{Thesis.tex} File}
+
+This is the main TeX file that takes input from all of the previously discussed
+files in the \texttt{Preamble} and \texttt{MainText} folders. To generate your
+document, this is the file you should compile. Compile once with \LaTeX,
+once with BibTeX and finally twice more with \LaTeX\ to get all the references right.
+
+There is one document option at the top of this file that you should make
+sure is correct, which controls whether to format the document for printing
+or as a digital version. The printed version needs to have a ``two-sided''
+style where the margins alternate on even and odd pages, whereas a digital
+version should have a ``one-sided'' style with consistent formatting on every
+page. Except for the final printed version, the formatting requirements
+require that you use the ``one-sided'' version (which is the default option).
+
+As mentioned in the section about the \texttt{MainText} folder, you may also
+need to edit this file to add extra sections or appendices.
+
+You probably won't need to edit this file very much otherwise, but in case
+you are looking for a specific setting or something, the following settings
+are defined in this file:
 \begin{itemize}
-
-	\item \textbf{Images.} This folder should contain all the images that you will use in your thesis. It can contain subfolders, for example one for each chapter. To include an image from the main text, use something like \texttt{\textbackslash includegraphics\{subfolder/image.jpg\} } without worrying about the \texttt{Images} path.
-
-	\item \textbf{MainText.} This folder contains a series of \LaTeX\ files that form the main text: introduction, chapters, conclusion, appendices and published articles. The introduction and conclusion as they are now are not numbered, which creates a few difficulties with the headers of the thesis. Those are solved by including the commands \texttt{\textbackslash unnumberedchapter\{\}} and \texttt{\textbackslash numberedchapter} before including the files in \texttt{xxx\_Thesis.tex}. If you want the introduction and conclusion to be numbered, re-write and treat them as regular chapters.
-
-	\item \textbf{Preamble.} This folder contains a series of \LaTeX\ files with the pages that will appear before the main text. Please write (or copy and paste) your own text in those files and delete the dummy text when appropriate. The files are:
-	      \begin{itemize}
-		      \item \texttt{abbreviations.tex} --- List of abbreviations. If the list goes over one page, create another table.
-		      \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
-		      \item \texttt{acknowledgments.tex} --- Acknowledgments. Follow directions in the file.
-		      \item \texttt{declaration.tex} --- Declaration of Original and Sole Authorship. Only modify the last item. This page needs to be signed once printed.
-		      \item \texttt{dedication.tex} --- Dedication (optional). Should only be a very few lines.
-		      \item \texttt{glossary.tex} --- Glossary (optional). If the list goes over one page, create another table.
-		      \item \texttt{nomenclature.tex} --- Nomenclature (optional). If the list goes over one page, create another table.
-		      \item \texttt{physics\_bibstyle.bst} --- Bibliography style file modified by Jeremie Gillet in 2011 to suit his thesis. Might be suitable for physics. If you want to use another custom bibliography style, include the file in this folder.
-		      \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
-	      \end{itemize}
-
+    \item Basic packages
+    \item Loading of in custom values from \texttt{Preamble/mydefinitions.tex}
+    \item Title page
+    \item Headers and footers
+    \item Table of Contents
+    \item Thesis main text import
+    \item Bibliography file (not style)
+    \item Appendices
 \end{itemize}
 
-\section{\texttt{Thesis.tex}}
+\section{Other Points}
 
-This is the main file, the only one that needs to be compiled to build the thesis. Compile once with \LaTeX, once with BibTeX and finally twice with \LaTeX\ to get all the references right. At the top of this file, you can see \verb|\documentclass[temporary]{oist_thesis}|. When you submit a temporary version to the graduate school, do not modify it. When you submit a final version, use \verb|\documentclass[final]{oist_thesis}| instead.
-
-Let's go through each section and comment them briefly. The last section will emphasize the differences between options \verb|\documentclass[temporary]{oist_thesis}| and \verb|\documentclass[final]{oist_thesis}|.
-
-\subsection{PACKAGES AND OTHER DOCUMENT CONFIGURATIONS}
-
-This section contains the minimum number of packages and definitions to compile the thesis. No line should be removed or modified.
-
-\subsection{ADD YOUR CUSTOM VALUES, COMMANDS AND PACKAGES}
-
-This section should not be modified directly. Instead, your packages and definitions should be included in  \texttt{Preamble/mydefinitions.tex}.
-
-\subsection{TITLE PAGE}
-
-Creates the title page. Do not modify.
-
-\subsection{PREAMBLE PAGES}
-
-Structures the style (header) for the preamble pages and builds them. Do not modify, except for deleting the optional preambles you might not want to include.
-
-\subsection{LIST OF CONTENTS/FIGURES/TABLES}
-
-Creates the different lists. Do not modify.
-
-\subsection{THESIS MAIN TEXT}
-
-Structures the style for the main text chapters and builds them.
-
-The command \texttt{\textbackslash numberedchapter} is only relevant for a transition between unnumbered sections and numbered sections, it does not need to be included between each chapter.
-
-\subsection{BIBLIOGRAPHY}
-
-Builds the bibliography. The style of the bibliography can be defined in\\
-\texttt{Preamble/mydefinitions.tex}.
-
-\subsection{APPENDICES}
-
-Structures the style for the appendices and builds them. The appendices are numbered with letters but are structured like regular chapters.
-
-\subsection{PUBLISHED ARTICLES}
-
-This last section add the PDF files of your previously published articles (or about to be published) to the thesis. You should only include PDF files provided by the publishing journal. This is strictly for the examiners' convenience in the temporary bound thesis, as for copyright reasons these files may not be published in the final version of the thesis.
-
-\subsection{Differences between a temporary version and final version}
-
-There are two main differences between \verb|\documentclass[temporary]{oist_thesis}| and \verb|\documentclass[final]{oist_thesis}|.
-
-The first difference is that the final version (\verb|\documentclass[final]{oist_thesis}|) does not contain the published articles for copyright reasons.
-
-The second difference is in the document style: page size, header and line spacing are different This might create small issues, such as page breaking with large tables, images or captions, when compiling the same content.
-
-
+\begin{itemize}
+    \item This guide uses the \texttt{\textbackslash texttt} environment to denote file
+        names and paths. You should not use this in your actual thesis (proposal)
+        as it will violate the font formatting requirements.
+\end{itemize}
 
